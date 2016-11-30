@@ -1,0 +1,80 @@
+<div id="post_show">
+  <h1>
+    <%= @course.title %>
+  </h1>
+  <p class="username">
+    Shared by
+    <%= @course.user.name %>
+    about
+    <%= time_ago_in_words(@course.created_at) %>
+  </p>
+  <div class="clearfix">
+    <div class="post_image_description">
+      <%= image_tag @course.image.url(:medium) %>
+      <div class="description">
+        <%= simple_format(@course.description) %>
+      </div>
+    </div>
+    <div class="post_data">
+      
+      <p class="data">
+        <i class="fa fa-comments-o"></i>
+        <%= pluralize(@course.comments.count, "Comment") %>
+      </p>
+      <% if @course.user == current_user %>
+        <%= link_to "Edit", edit_course_path(@course), class: "data" %>
+        <%= link_to "Delete", course_path(@course), method: :delete, data: { confirm: "Are you sure?" }, class: "data" %>
+      <% end %>
+    </div>
+    <div id="random_post">
+      <h3>Featured Course</h3>
+      <div class="post">
+        <div class="post_image">
+          <%= link_to (image_tag @random_course.image.url(:medium)), course_path(@random_course) %>
+        </div>
+        <div class="post_content">
+          <div class="title">
+            <h2>
+              <%= link_to @random_course.title, course_path(@random_course) %>
+            </h2>
+          </div>
+          <div class="data clearfix">
+            <p class="username">
+              Taught by
+              <%= @random_course.user.name %>
+            </p>
+            <p class="buttons">
+              <span>
+                <i class="fa fa-comments-o"></i>
+                <%= @random_course.comments.count %>
+              </span>
+             <!--  <span>
+                <i class="fa fa-thumbs-o-up"></i>
+                <%= @random_course.get_likes.size %>
+              </span> -->
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="comments">
+  <h2 class="comment_count">
+    <%= pluralize(@course.comments.count, "Comment") %>
+  </h2>
+  <% @comments.each do |comment| %>
+    <div class="comment">
+      <p class="username">
+        <%= comment.user.name %>
+      </p>
+      <p class="content">
+        <%= comment.content %>
+      </p>
+    </div>
+  <% end %>
+  <%= render "comments/form" %>
+</div>
+
