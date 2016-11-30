@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  assignment_id: 1
+  status: 1
+  notes: MyString
+  grade: MyString
+  submitted_at: 2016-11-29 16:34:22
+  updated_at: 2016-11-29 16:34:22
+  user_id: 1
+  compilation_output: MyText
+  execution_output: MyText
+
+two:
+  assignment_id: 1
+  status: 1
+  notes: MyString
+  grade: MyString
+  submitted_at: 2016-11-29 16:34:22
+  updated_at: 2016-11-29 16:34:22
+  user_id: 1
+  compilation_output: MyText
+  execution_output: MyText

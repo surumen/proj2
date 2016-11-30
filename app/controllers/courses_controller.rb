@@ -19,8 +19,10 @@ class CoursesController < ApplicationController
     @course = current_user.courses.build(course_params)
 
     if @course.save
+      flash[:notice] = "Successfully created course"
       redirect_to @course
     else
+      flash[:alert] = "Error creating new course"
       render 'new'
     end
   end
@@ -31,15 +33,21 @@ class CoursesController < ApplicationController
 
   def update
     if @course.update(course_params)
+      flash[:notice] = "Successfully updated course"
       redirect_to @course
     else
+      flash[:alert] = "Error updating course"
       render 'edit'
     end
   end
 
   def destroy
-    @course.destroy
-    redirect_to root_path
+    if @course.destroy
+      flash[:notice] = "Successfully deleted course"
+      redirect_to root_path
+    else
+      flash[:alert] = "Error updating course"
+    end
   end
 
   private
@@ -49,7 +57,7 @@ class CoursesController < ApplicationController
   end
 
   def course_params
-    params.require(:course).permit(:title, :description, :image)
+    params.require(:course).permit(:title, :body, :image)
   end
 
 end

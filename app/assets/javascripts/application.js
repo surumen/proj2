@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require bootstrap-sprockets
 //= require site
 //= require style
 //= require scripts
@@ -19,4 +20,5 @@
 //= require forms
 //= require master
 //= require jquery_ujs
+//= require ckeditor/init
 //= require_tree .

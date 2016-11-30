@@ -3,9 +3,9 @@
     <%= @course.title %>
   </h1>
   <p class="username">
-    Shared by
+    Taught by
     <%= @course.user.name %>
-    about
+    | Created about
     <%= time_ago_in_words(@course.created_at) %>
   </p>
   <div class="clearfix">
@@ -15,6 +15,12 @@
         <%= simple_format(@course.description) %>
       </div>
     </div>
+    
+    <div class="col-sm-11 col-xs-12 blog-content">
+          <div><%= raw @course.body %></div>
+    </div>
+
+
     <div class="post_data">
       
       <p class="data">
@@ -22,8 +28,8 @@
         <%= pluralize(@course.comments.count, "Comment") %>
       </p>
       <% if @course.user == current_user %>
-        <%= link_to "Edit", edit_course_path(@course), class: "data" %>
-        <%= link_to "Delete", course_path(@course), method: :delete, data: { confirm: "Are you sure?" }, class: "data" %>
+            <%= link_to "Edit", edit_course_path(@course), class: "data" %>
+            <%= link_to "Delete", course_path(@course), method: :delete, data: { confirm: "Are you sure?" }, class: "data" %>
       <% end %>
     </div>
     <div id="random_post">

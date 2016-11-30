@@ -70,5 +70,9 @@ header {
 	}
 }
 
+
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
 @import 'home.css.scss';
 @import 'post.css.scss';
+@import 'buttons.css.scss';

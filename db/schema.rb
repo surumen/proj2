@@ -10,7 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161128233759) do
+ActiveRecord::Schema.define(version: 20161130004741) do
+
+  create_table "assets", force: :cascade do |t|
+    t.integer  "assignment_id"
+    t.string   "name"
+    t.integer  "script"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "assignments", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "due"
+    t.string   "abstract"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "description"
+    t.integer  "course_id"
+    t.boolean  "compiled"
+  end
+
+  create_table "ckeditor_assets", force: :cascade do |t|
+    t.string   "data_file_name",               null: false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    limit: 30
+    t.string   "type",              limit: 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable"
+    t.index ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -20,10 +57,23 @@ ActiveRecord::Schema.define(version: 20161128233759) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "contents", force: :cascade do |t|
+    t.integer  "submission_id"
+    t.integer  "requirement_id"
+    t.integer  "type"
+    t.string   "notes"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
   create_table "courses", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.string   "link"
+    t.string   "subdescription"
+    t.text     "body"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.integer  "user_id"
@@ -32,6 +82,31 @@ ActiveRecord::Schema.define(version: 20161128233759) do
     t.string   "image_content_type"
     t.datetime "image_updated_at"
     t.text     "syllabus"
+  end
+
+  create_table "requirements", force: :cascade do |t|
+    t.integer  "assignmement_id"
+    t.string   "name"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "submissions", force: :cascade do |t|
+    t.integer  "assignment_id"
+    t.integer  "status"
+    t.string   "notes"
+    t.string   "grade"
+    t.datetime "submitted_at"
+    t.datetime "updated_at",         null: false
+    t.integer  "user_id"
+    t.text     "compilation_output"
+    t.text     "execution_output"
+    t.datetime "created_at",         null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -49,6 +124,7 @@ ActiveRecord::Schema.define(version: 20161128233759) do
     t.string   "name"
     t.string   "reset_password_token"
     t.datetime "remember_created_at"
+    t.integer  "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -37,6 +37,9 @@ end
 gem 'simple_form', '~> 3.3', '>= 3.3.1'
 gem 'paperclip', '~> 5.1'
 gem 'devise', '~> 4.2'
+gem 'pundit'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'ckeditor', '~> 4.1'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
