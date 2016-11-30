@@ -14,7 +14,7 @@ User
 
 
 Courses
-•	Courses have a title, description, syllabi, assignments, videos
+•	Courses have a title, description, syllabus, assignments, videos
 •	Courses are done on a basis of subscription; users can subscribe to be enrolled in the course
 
 Assignments
