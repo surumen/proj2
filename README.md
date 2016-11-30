@@ -48,6 +48,17 @@ Features:
 •	A user can be both the instructor (create course, post webcasts and corresponding assignments) and the student (enroll in other courses)
 
 
+
+Gems Used
+	- Devise for user authentication
+	- Ckeditor for course syllabus
+	- Simple form for forms 
+	- Paperclip to upload images to site
+	- Pundit
+  
+  
+  
+
 Division of Labor:
 •	Anh: Made Controllers, Grades, 
 •	Moses: Front End, Styling, gems, Login in
