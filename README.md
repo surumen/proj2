@@ -3,7 +3,8 @@ Title: Proj2
 Team Members: Anh Le, Moses Surumen, Roberto Romo
 Demo Link:
 
-Idea: An E-learning application where anyone can be an instructor and teach a course to others. It is a platform where anyone can share their knowledge on anything and everything.
+Idea: An E-learning application where students can enroll in courses. A user/instructor can post the course content on the website, and provide links to videos and slides. The instructor can also upload files (images) in case demonstration is needed. Students can review each course by commenting on what they like best, or what they would like to see improved. 
+An instructor who created the course can edit the course, or delete it from the website.
 
 Models and Description:
 User
@@ -40,5 +41,5 @@ Features:
 
 Division of Labor:
 •	Anh: Made Controllers, Grades, 
-•	Moses: Front End, Styling, Users, Login in
+•	Moses: Front End, Styling, gems, Login in
 •	Roberto: Made Assignments, Courses
