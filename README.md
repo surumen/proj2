@@ -1,4 +1,4 @@
-# README
+# Proj2
 Title: Proj2
 Team Members: Anh Le, Moses Surumen, Roberto Romo
 Demo Link:
